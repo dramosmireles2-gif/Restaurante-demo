@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RMKT Flyers IG | El Divino Bocado</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"></script>
+    <style>
+      :root {
+        --rmkt-bg: #0a0a0a;
+        --rmkt-accent: #00e676;
+        --rmkt-text: #ffffff;
+        --rmkt-muted: #aaaaaa;
+        --project-bg: #120f0c;
+        --project-panel: #2a2019;
+        --project-text: #f4ebdc;
+        --project-accent: #e6a756;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 24px;
+        font-family: "Jost", sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(0, 230, 118, 0.08), transparent 26%),
+          linear-gradient(180deg, #0a0a0a 0%, #050505 100%);
+        color: var(--rmkt-text);
+      }
+
+      @media print {
+        body {
+          display: none;
+        }
+      }
+
+      .page {
+        display: grid;
+        gap: 28px;
+        justify-content: center;
+      }
+
+      .block {
+        display: grid;
+        gap: 12px;
+        justify-items: center;
+      }
+
+      .artboard {
+        position: relative;
+        overflow: hidden;
+        outline: 1px dashed rgba(0, 230, 118, 0.15);
+        background:
+          radial-gradient(circle at top right, rgba(0, 230, 118, 0.1), transparent 28%),
+          linear-gradient(180deg, #101010 0%, #080808 100%);
+      }
+
+      .square {
+        width: 600px;
+        height: 600px;
+      }
+
+      .story {
+        width: 600px;
+        height: 1067px;
+      }
+
+      .download-btn {
+        width: 600px;
+        padding: 14px;
+        border: 0;
+        border-radius: 8px;
+        background: var(--rmkt-accent);
+        color: var(--rmkt-bg);
+        font: 700 16px/1 "Jost", sans-serif;
+        cursor: pointer;
+      }
+
+      .rmkt-logo {
+        display: inline-flex;
+        width: fit-content;
+      }
+
+      .rmkt-logo img {
+        display: block;
+        width: 138px;
+        height: auto;
+      }
+
+      .eyebrow {
+        color: var(--rmkt-accent);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .headline {
+        margin: 0;
+        font-size: 38px;
+        line-height: 0.92;
+        letter-spacing: -0.04em;
+      }
+
+      .copy {
+        margin: 0;
+        color: var(--rmkt-muted);
+        font-size: 14px;
+        line-height: 1.35;
+      }
+
+      .qr-box {
+        display: grid;
+        justify-items: center;
+        gap: 6px;
+      }
+
+      .qr-box img {
+        display: block;
+        background: #fff;
+        padding: 10px;
+        border-radius: 8px;
+      }
+
+      .qr-box small {
+        color: var(--rmkt-muted);
+        text-align: center;
+        font-size: 10px;
+        line-height: 1.2;
+      }
+
+      .post-1-layout {
+        display: grid;
+        grid-template-columns: 0.84fr 1.16fr;
+        height: 100%;
+        padding: 22px;
+        gap: 12px;
+      }
+
+      .post-copy {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .post-copy-top {
+        display: grid;
+        gap: 10px;
+      }
+
+      .cta-chip {
+        display: inline-flex;
+        width: fit-content;
+        padding: 7px 11px;
+        border: 1px solid rgba(0, 230, 118, 0.25);
+        border-radius: 999px;
+        color: var(--rmkt-accent);
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .qr-row {
+        display: flex;
+        align-items: end;
+        gap: 10px;
+      }
+
+      .project-note {
+        max-width: 112px;
+        color: var(--rmkt-muted);
+        font-size: 12px;
+        line-height: 1.2;
+      }
+
+      .project-note strong {
+        display: block;
+        color: var(--rmkt-text);
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .project-window,
+      .story-mockup {
+        position: relative;
+        overflow: hidden;
+        border-radius: 26px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background:
+          radial-gradient(circle at top left, rgba(230, 167, 86, 0.18), transparent 32%),
+          linear-gradient(180deg, #1a1410 0%, #120f0c 100%);
+        box-shadow: 0 26px 70px rgba(0, 0, 0, 0.45);
+      }
+
+      .project-window {
+        padding: 12px;
+      }
+
+      .browser-bar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 10px;
+      }
+
+      .browser-dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.18);
+      }
+
+      .browser-url {
+        flex: 1;
+        min-height: 18px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .mockup-shell {
+        display: grid;
+        gap: 10px;
+      }
+
+      .mockup-hero {
+        position: relative;
+        overflow: hidden;
+        min-height: 300px;
+        border-radius: 22px;
+        background: #120f0c;
+      }
+
+      .mockup-photo,
+      .story-photo {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 18px;
+      }
+
+      .mockup-hero .mockup-photo {
+        position: absolute;
+        inset: 0;
+        border-radius: 0;
+      }
+
+      .mockup-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(180deg, rgba(18, 15, 12, 0.18) 0%, rgba(18, 15, 12, 0.2) 30%, rgba(18, 15, 12, 0.85) 100%);
+      }
+
+      .mockup-overlay {
+        position: absolute;
+        inset: auto 0 0 0;
+        z-index: 1;
+        display: grid;
+        gap: 8px;
+        padding: 14px;
+      }
+
+      .mockup-location {
+        color: var(--project-accent);
+        font-size: 8px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .mockup-title {
+        margin: 0;
+        max-width: 190px;
+        color: var(--project-text);
+        font-size: 24px;
+        line-height: 0.92;
+        letter-spacing: -0.05em;
+        font-weight: 600;
+      }
+
+      .mockup-text {
+        margin: 0;
+        max-width: 210px;
+        color: #d1c2ad;
+        font-size: 10px;
+        line-height: 1.35;
+      }
+
+      .mockup-actions {
+        display: flex;
+        gap: 8px;
+      }
+
+      .mockup-btn {
+        display: inline-flex;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 10px;
+        font-weight: 700;
+      }
+
+      .mockup-btn.primary {
+        background: linear-gradient(135deg, #e6a756, #f2be78);
+        color: #22170d;
+      }
+
+      .mockup-btn.ghost {
+        border: 1px solid rgba(244, 235, 220, 0.2);
+        color: var(--project-text);
+      }
+
+      .mockup-bottom {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 10px;
+      }
+
+      .mockup-dish {
+        position: relative;
+        overflow: hidden;
+        min-height: 112px;
+        border-radius: 18px;
+      }
+
+      .mockup-dish .mockup-photo {
+        border-radius: 18px;
+      }
+
+      .mockup-side {
+        display: grid;
+        gap: 8px;
+      }
+
+      .mockup-stat {
+        padding: 9px 10px;
+        border-radius: 14px;
+        background: rgba(248, 238, 221, 0.08);
+        border: 1px solid rgba(244, 235, 220, 0.08);
+      }
+
+      .mockup-stat strong {
+        display: block;
+        color: var(--project-text);
+        font-size: 11px;
+      }
+
+      .mockup-stat span {
+        color: #c5b7a2;
+        font-size: 9px;
+        line-height: 1.25;
+      }
+
+      .mockup-badge {
+        display: inline-flex;
+        width: fit-content;
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: rgba(13, 10, 8, 0.82);
+        color: var(--project-text);
+        font-size: 9px;
+      }
+
+      .post-2-layout {
+        display: grid;
+        height: 100%;
+        padding: 17px;
+        gap: 7px;
+        align-content: space-between;
+      }
+
+      .post-2-top {
+        display: grid;
+        gap: 8px;
+      }
+
+      .post-2-top .headline {
+        font-size: 29px;
+      }
+
+      .post-2-top .copy {
+        font-size: 13px;
+      }
+
+      .post-2-preview {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 8px;
+        min-height: 108px;
+      }
+
+      .preview-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .preview-card img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .preview-badge {
+        position: absolute;
+        left: 8px;
+        bottom: 8px;
+        padding: 6px 9px;
+        border-radius: 999px;
+        background: rgba(10, 10, 10, 0.78);
+        color: var(--rmkt-text);
+        font-size: 9px;
+        font-weight: 600;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+
+      .service-tile {
+        padding: 7px;
+        border: 1px solid rgba(0, 230, 118, 0.12);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .service-tile strong {
+        display: block;
+        margin-bottom: 3px;
+        font-size: 14px;
+      }
+
+      .service-tile span {
+        color: var(--rmkt-muted);
+        font-size: 10px;
+        line-height: 1.25;
+      }
+
+      .contacts {
+        display: grid;
+        gap: 5px;
+      }
+
+      .contact-card {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 9px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .icon-dot {
+        display: grid;
+        place-items: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: rgba(0, 230, 118, 0.14);
+        color: var(--rmkt-accent);
+      }
+
+      .icon-dot svg {
+        width: 14px;
+        height: 14px;
+        display: block;
+        fill: currentColor;
+      }
+
+      .contact-card strong {
+        display: block;
+        font-size: 11px;
+        line-height: 1.1;
+      }
+
+      .contact-card span {
+        color: var(--rmkt-muted);
+        font-size: 9px;
+      }
+
+      .post-2-bottom {
+        display: grid;
+        grid-template-columns: 1fr 136px;
+        gap: 8px;
+        align-items: start;
+      }
+
+      .post-2-bottom .qr-box img {
+        width: 136px;
+        height: 136px;
+      }
+
+      .post-2-bottom .qr-box small {
+        font-size: 9px;
+        line-height: 1.1;
+      }
+
+      .story-layout {
+        display: grid;
+        height: 100%;
+        padding: 28px;
+        gap: 18px;
+        align-content: start;
+      }
+
+      .story-copy {
+        display: grid;
+        gap: 10px;
+      }
+
+      .story-copy .headline {
+        font-size: 48px;
+      }
+
+      .story-mockup {
+        padding: 14px;
+      }
+
+      .story-frame {
+        border-radius: 24px;
+        padding: 14px;
+        background:
+          radial-gradient(circle at top left, rgba(230, 167, 86, 0.16), transparent 28%),
+          linear-gradient(180deg, #1a1410 0%, #120f0c 100%);
+      }
+
+      .story-header {
+        display: grid;
+        gap: 6px;
+        margin-bottom: 10px;
+      }
+
+      .story-location {
+        color: var(--project-accent);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .story-title {
+        margin: 0;
+        color: var(--project-text);
+        font-size: 34px;
+        line-height: 0.92;
+        letter-spacing: -0.05em;
+        font-weight: 600;
+      }
+
+      .story-sub {
+        margin: 0;
+        color: #c5b7a2;
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+      .story-photo-stack {
+        display: grid;
+        gap: 10px;
+      }
+
+      .story-photo.primary {
+        height: 300px;
+      }
+
+      .story-photo.secondary {
+        height: 120px;
+      }
+
+      .story-footer {
+        display: grid;
+        gap: 12px;
+      }
+
+      .story-note {
+        color: var(--rmkt-muted);
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .story-wa {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 14px;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .story-wa .qr-box img {
+        width: 160px;
+        height: 160px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="block">
+        <div class="artboard square" id="post-1">
+          <div class="post-1-layout">
+            <div class="post-copy">
+              <div class="post-copy-top">
+                <div class="rmkt-logo">
+                  <img src="rmkt-logo.png" alt="Logo de RMKT Ramos Digital" />
+                </div>
+                <span class="eyebrow">Landing web para restaurante</span>
+                <h1 class="headline">RMKT hace esto por ti.</h1>
+                <p class="copy">
+                  Diseño, estructura y presencia visual para que tu negocio se vea listo para
+                  vender.
+                </p>
+              </div>
+
+              <div class="qr-row">
+                <div class="qr-box">
+                  <img
+                    src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=6&data=https%3A%2F%2Fwa.me%2F528148078309%3Ftext%3DHola%252C%2520me%2520interesa%2520cotizar%2520un%2520proyecto%2520web"
+                    alt="QR de WhatsApp de RMKT"
+                    width="160"
+                    height="160"
+                  />
+                  <small>Escanea para cotizar por WhatsApp</small>
+                </div>
+                <div class="project-note">
+                  <strong>ramosmkt.lat</strong>
+                  <strong>@ramos_mkt.rex</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-window">
+              <div class="browser-bar">
+                <span class="browser-dot"></span>
+                <span class="browser-dot"></span>
+                <span class="browser-dot"></span>
+                <span class="browser-url"></span>
+              </div>
+
+              <div class="mockup-shell">
+                <div class="mockup-hero">
+                  <img class="mockup-photo" src="hero-interior.jpg" alt="Mockup interior" />
+                  <div class="mockup-overlay">
+                    <span class="mockup-location">San Pedro Garza Garcia, Nuevo Leon</span>
+                    <h2 class="mockup-title">Donde la cocina mexicana se viste de noche.</h2>
+                    <p class="mockup-text">
+                      Sitio editorial oscuro, atmosfera premium y reservas claras.
+                    </p>
+                    <div class="mockup-actions">
+                      <span class="mockup-btn primary">Reservar ahora</span>
+                      <span class="mockup-btn ghost">Ver carta</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mockup-bottom">
+                  <div class="mockup-dish">
+                    <img class="mockup-photo" src="hero-platillo.png" alt="Mockup platillo" />
+                  </div>
+                  <div class="mockup-side">
+                    <div class="mockup-stat">
+                      <strong>4.8/5</strong>
+                      <span>Cenas memorables</span>
+                    </div>
+                    <div class="mockup-stat">
+                      <strong>Mar - Dom</strong>
+                      <span>1:00 PM - 11:30 PM</span>
+                    </div>
+                    <span class="mockup-badge">Look editorial + CTA</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="download-btn" data-target="post-1" data-file="rmkt-post-1-el-divino-bocado.png">
+          Descargar Post 1 PNG
+        </button>
+      </section>
+
+      <section class="block">
+        <div class="artboard square" id="post-2">
+          <div class="post-2-layout">
+            <div class="post-2-top">
+              <div class="rmkt-logo">
+                <img src="rmkt-logo.png" alt="Logo de RMKT Ramos Digital" />
+              </div>
+              <span class="eyebrow">Captacion y conversion</span>
+              <h2 class="headline">¿Tienes una landing de restaurante?</h2>
+              <p class="copy">
+                RMKT hace esto por ti: diseño visual fuerte, CTA claro y version movil lista para
+                vender.
+              </p>
+            </div>
+
+            <div class="post-2-preview">
+              <div class="preview-card">
+                <img src="hero-interior.jpg" alt="Interior de restaurante para muestra RMKT" />
+                <span class="preview-badge">Look premium + mobile ready</span>
+              </div>
+              <div class="preview-card">
+                <img src="hero-platillo.png" alt="Platillo de restaurante para muestra RMKT" />
+              </div>
+            </div>
+
+            <div class="services-grid">
+              <article class="service-tile">
+                <strong>Diseño</strong>
+                <span>Look premium con identidad propia</span>
+              </article>
+              <article class="service-tile">
+                <strong>Web</strong>
+                <span>Landing o sitio completo para tu negocio</span>
+              </article>
+              <article class="service-tile">
+                <strong>Entrega</strong>
+                <span>Listo para publicar, mostrar y cotizar</span>
+              </article>
+            </div>
+
+            <div class="post-2-bottom">
+              <div class="contacts">
+                <div class="contact-card">
+                  <span class="icon-dot" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" role="img">
+                      <path
+                        d="M19.05 4.91A9.82 9.82 0 0 0 12.07 2C6.65 2 2.24 6.41 2.24 11.83c0 1.74.45 3.43 1.31 4.92L2 22l5.4-1.5a9.8 9.8 0 0 0 4.67 1.19h.01c5.42 0 9.83-4.41 9.83-9.83 0-2.63-1.02-5.1-2.86-6.95ZM12.08 20a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-3.2.89.85-3.12-.2-.32a8.15 8.15 0 0 1-1.24-4.31c0-4.48 3.64-8.12 8.12-8.12 2.17 0 4.21.84 5.74 2.38a8.06 8.06 0 0 1 2.37 5.74c0 4.48-3.64 8.12-8.11 8.12Zm4.45-6.08c-.24-.12-1.43-.71-1.66-.79-.22-.08-.39-.12-.55.12-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.21-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.1-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2 0 1.18.86 2.32.98 2.48.12.16 1.69 2.58 4.1 3.62.57.25 1.02.4 1.37.51.57.18 1.09.15 1.5.09.46-.07 1.43-.58 1.63-1.14.2-.56.2-1.03.14-1.13-.06-.1-.22-.16-.46-.28Z"
+                      />
+                    </svg>
+                  </span>
+                  <div>
+                    <strong>+52 814 807 8309</strong>
+                    <span>Cotiza tu proyecto web</span>
+                  </div>
+                </div>
+                <div class="contact-card">
+                  <span class="icon-dot" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" role="img">
+                      <path
+                        d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.8A3.95 3.95 0 0 0 3.8 7.75v8.5a3.95 3.95 0 0 0 3.95 3.95h8.5a3.95 3.95 0 0 0 3.95-3.95v-8.5a3.95 3.95 0 0 0-3.95-3.95h-8.5Zm8.95 1.35a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3ZM12 6.6A5.4 5.4 0 1 1 6.6 12 5.4 5.4 0 0 1 12 6.6Zm0 1.8A3.6 3.6 0 1 0 15.6 12 3.6 3.6 0 0 0 12 8.4Z"
+                      />
+                    </svg>
+                  </span>
+                  <div>
+                    <strong>@ramos_mkt.rex</strong>
+                    <span>Instagram de RMKT</span>
+                  </div>
+                </div>
+                <div class="contact-card">
+                  <span class="icon-dot" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" role="img">
+                      <path
+                        d="M13.73 22v-8.2h2.75l.41-3.2h-3.16V8.56c0-.93.26-1.56 1.59-1.56h1.7V4.14c-.29-.04-1.29-.12-2.45-.12-2.42 0-4.07 1.48-4.07 4.2v2.34H8v3.2h2.57V22h3.16Z"
+                      />
+                    </svg>
+                  </span>
+                  <div>
+                    <strong>/ramosmkt</strong>
+                    <span>Facebook de RMKT</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="qr-box">
+                <img
+                  src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=6&data=https%3A%2F%2Fwa.me%2F528148078309%3Ftext%3DHola%252C%2520me%2520interesa%2520cotizar%2520un%2520proyecto%2520web"
+                  alt="QR de WhatsApp de RMKT"
+                  width="144"
+                  height="144"
+                />
+                <small>Habla con RMKT por WhatsApp</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="download-btn" data-target="post-2" data-file="rmkt-post-2-el-divino-bocado.png">
+          Descargar Post 2 PNG
+        </button>
+      </section>
+
+      <section class="block">
+        <div class="artboard story" id="story-1">
+          <div class="story-layout">
+            <div class="rmkt-logo">
+              <img src="rmkt-logo.png" alt="Logo de RMKT Ramos Digital" />
+            </div>
+
+            <div class="story-copy">
+              <span class="eyebrow">Story showcase</span>
+              <h2 class="headline">RMKT hace esto por ti.</h2>
+              <p class="copy">
+                Una landing visual, moderna y lista para mostrar tu negocio con presencia real.
+              </p>
+            </div>
+
+            <div class="story-mockup">
+              <div class="story-frame">
+                <div class="story-header">
+                  <span class="story-location">San Pedro Garza Garcia, Nuevo Leon</span>
+                  <h3 class="story-title">Donde la cocina mexicana se viste de noche.</h3>
+                  <p class="story-sub">
+                    Branding, hero editorial, galeria, reservas y una experiencia lista para
+                    vender.
+                  </p>
+                </div>
+
+                <div class="story-photo-stack">
+                  <img class="story-photo primary" src="hero-interior.jpg" alt="Interior del proyecto" />
+                  <img class="story-photo secondary" src="galeria-barra.jpg" alt="Barra del proyecto" />
+                  <img class="story-photo secondary" src="hero-platillo.png" alt="Platillo del proyecto" />
+                </div>
+              </div>
+            </div>
+
+            <div class="story-footer">
+              <div class="story-wa">
+                <div>
+                  <span class="eyebrow">Cotiza tu web</span>
+                  <h3 style="margin: 8px 0 10px; font-size: 34px; line-height: 0.95;">
+                    WhatsApp directo con RMKT
+                  </h3>
+                  <p class="copy" style="max-width: 220px;">
+                    Si quieres una landing, invitacion o e-commerce, RMKT hace esto por ti.
+                  </p>
+                </div>
+
+                <div class="qr-box">
+                  <img
+                    src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=6&data=https%3A%2F%2Fwa.me%2F528148078309%3Ftext%3DHola%252C%2520me%2520interesa%2520cotizar%2520un%2520proyecto%2520web"
+                    alt="QR de WhatsApp de RMKT"
+                    width="168"
+                    height="168"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="download-btn" data-target="story-1" data-file="rmkt-story-1-el-divino-bocado.png">
+          Descargar Story PNG
+        </button>
+      </section>
+    </main>
+
+    <script>
+      async function downloadDesign(button) {
+        const originalText = button.textContent;
+        const targetId = button.dataset.target;
+        const fileName = button.dataset.file;
+        const node = document.getElementById(targetId);
+
+        button.disabled = true;
+        button.textContent = "Generando...";
+
+        try {
+          const url = await htmlToImage.toPng(node, { pixelRatio: 2 });
+          const link = document.createElement("a");
+          link.href = url;
+          link.download = fileName;
+          link.click();
+        } finally {
+          button.disabled = false;
+          button.textContent = originalText;
+        }
+      }
+
+      document.querySelectorAll(".download-btn").forEach((button) => {
+        button.addEventListener("click", () => downloadDesign(button));
+      });
+    </script>
+  </body>
+</html>
