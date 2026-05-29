@@ -1,3 +1,14 @@
+const ctaFloat = document.querySelector(".cta-float");
+const reservaSection = document.querySelector("#reserva");
+
+if (ctaFloat && reservaSection) {
+  const ctaObserver = new IntersectionObserver(
+    ([entry]) => ctaFloat.classList.toggle("is-hidden", entry.isIntersecting),
+    { threshold: 0.1 }
+  );
+  ctaObserver.observe(reservaSection);
+}
+
 const revealItems = document.querySelectorAll(
   ".feature-strip article, .menu-card, .story-panel, .story-stats article, .experience-card, .gallery-card, .detail-card, .photo-card, .reservation-section"
 );
