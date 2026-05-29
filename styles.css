@@ -731,10 +731,15 @@ input {
 
   .page-shell {
     width: min(calc(100% - 22px), var(--max-width));
+    padding-bottom: 88px;
   }
 
   .topbar {
     flex-wrap: wrap;
+  }
+
+  .topbar > .button {
+    display: none;
   }
 
   .nav {
@@ -744,6 +749,8 @@ input {
     gap: 14px;
     overflow-x: auto;
     padding-bottom: 4px;
+    -webkit-mask-image: linear-gradient(to right, black 82%, transparent 100%);
+    mask-image: linear-gradient(to right, black 82%, transparent 100%);
   }
 
   .hero-metrics,
