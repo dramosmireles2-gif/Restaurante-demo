@@ -54,15 +54,15 @@
 
             <ul class="hero-metrics" aria-label="Datos destacados del restaurante">
               <li>
-                <strong>4.8/5</strong>
+                <strong class="metric-value">4.8<small>/5</small></strong>
                 <span>favorito para cenas de aniversario y reuniones con estilo</span>
               </li>
               <li>
-                <strong>Brasa + barra</strong>
+                <strong class="metric-value">Brasa<small> + barra</small></strong>
                 <span>menu de temporada, vinos, mixologia y postres de casa</span>
               </li>
               <li>
-                <strong>Mar - Dom</strong>
+                <strong class="metric-value">Mar<small> — Dom</small></strong>
                 <span>servicio de comida tardia y cena hasta las 11:30 PM</span>
               </li>
             </ul>
@@ -100,16 +100,31 @@
 
         <section class="feature-strip">
           <article>
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 17V9a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8M1 17h18M8 8V5a2 2 0 1 1 4 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
             <span>01</span>
             <h3>Terraza y salon</h3>
             <p>Espacios pensados para una cena intima o una mesa larga con amigos.</p>
           </article>
           <article>
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 3h12L11 11v6M9 17h2M7 7h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
             <span>02</span>
             <h3>Cocteleria de autor</h3>
             <p>Destilados mexicanos, vinos seleccionados y una barra que acompana cada tiempo.</p>
           </article>
           <article>
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 2l1.8 5.4H17l-4.5 3.3 1.7 5.3L10 13l-4.2 3 1.7-5.3L3 7.4h5.2L10 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+            </div>
             <span>03</span>
             <h3>Eventos privados</h3>
             <p>Reservas para celebraciones, cenas empresariales y ocasiones especiales.</p>
@@ -331,6 +346,7 @@
       </footer>
     </div>
 
+    <a class="cta-float" href="#reserva">Reservar mesa</a>
     <script src="script.js"></script>
   </body>
 </html>
