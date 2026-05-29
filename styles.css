@@ -282,12 +282,14 @@ input {
 .photo-media {
   display: block;
   width: 100%;
+  aspect-ratio: 16 / 10;
   min-height: 260px;
   max-height: 360px;
   object-fit: cover;
 }
 
 .photo-media-tall {
+  aspect-ratio: 4 / 5;
   min-height: 470px;
   max-height: 470px;
 }
@@ -686,6 +688,12 @@ input {
 }
 
 @media (max-width: 640px) {
+  :root {
+    --radius-lg: 20px;
+    --radius-md: 14px;
+    --radius-sm: 12px;
+  }
+
   .page-shell {
     padding-top: 12px;
   }
@@ -703,6 +711,10 @@ input {
 
   .hero-actions {
     flex-direction: column;
+  }
+
+  .hero {
+    padding-bottom: 40px;
   }
 
   .hero-art {
