@@ -423,7 +423,6 @@ input {
 .menu-grid,
 .story-section,
 .experience-grid,
-.gallery-grid,
 .detail-list {
   display: grid;
   gap: 22px;
@@ -488,8 +487,7 @@ input {
   line-height: 0.95;
 }
 
-.menu-grid,
-.gallery-grid {
+.menu-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
@@ -583,11 +581,24 @@ input {
 }
 
 .gallery-grid {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   margin-top: 8px;
+  padding-bottom: 4px;
 }
 
-.gallery-card:last-child {
-  grid-column: 1 / -1;
+.gallery-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery-card {
+  scroll-snap-align: start;
+  flex: 0 0 calc(50% - 9px);
+  min-width: 0;
 }
 
 .detail-list {
@@ -729,8 +740,7 @@ input {
   .hero-metrics,
   .feature-strip,
   .menu-grid,
-  .experience-grid,
-  .gallery-grid {
+  .experience-grid {
     grid-template-columns: 1fr;
   }
 
@@ -748,8 +758,8 @@ input {
     flex-direction: column;
   }
 
-  .gallery-card:last-child {
-    grid-column: auto;
+  .gallery-card {
+    flex: 0 0 calc(65% - 9px);
   }
 }
 
@@ -774,13 +784,16 @@ input {
     align-items: center;
   }
 
-  .experience-grid,
-  .gallery-grid {
+  .experience-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .menu-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gallery-card {
+    flex: 0 0 calc(72% - 9px);
   }
 }
 
@@ -860,10 +873,32 @@ input {
     padding: 18px;
   }
 
-  .menu-grid,
-  .experience-grid,
-  .gallery-grid {
+  .experience-grid {
     grid-template-columns: 1fr;
+  }
+
+  .menu-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 4px;
+    gap: 16px;
+  }
+
+  .menu-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .menu-card {
+    scroll-snap-align: start;
+    flex: 0 0 82%;
+    min-width: 0;
+  }
+
+  .gallery-card {
+    flex: 0 0 84%;
   }
 
   .story-stats article {
